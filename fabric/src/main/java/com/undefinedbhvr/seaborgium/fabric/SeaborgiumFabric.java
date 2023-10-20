@@ -4,11 +4,12 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.undefinedbhvr.seaborgium.Seaborgium;
 import com.undefinedbhvr.seaborgium.fabric.command.SeaborgiumCommand;
 import net.fabricmc.api.ClientModInitializer;
-import net.fabricmc.fabric.api.client.command.v1.ClientCommandManager;
-import net.fabricmc.fabric.api.client.command.v1.FabricClientCommandSource;
+import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
+import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
+import net.minecraft.commands.CommandBuildContext;
 
 public class SeaborgiumFabric implements ClientModInitializer {
-    public static void client_commands(CommandDispatcher<FabricClientCommandSource> dispatcher) {
+    public static void client_commands(CommandDispatcher<FabricClientCommandSource> dispatcher, CommandBuildContext registryAccess) {
         SeaborgiumCommand.register(dispatcher);
     }
 
@@ -16,6 +17,6 @@ public class SeaborgiumFabric implements ClientModInitializer {
     public void onInitializeClient() {
         Seaborgium.init();
         Seaborgium.LOGGER.info("Loader detected: Fabric");
-        client_commands(ClientCommandManager.DISPATCHER);
+        ClientCommandRegistrationCallback.EVENT.register(SeaborgiumFabric::client_commands);
     }
 }
