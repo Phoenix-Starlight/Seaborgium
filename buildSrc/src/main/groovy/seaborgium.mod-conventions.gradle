@@ -1,0 +1,14 @@
+def copyJarNameConsistent = tasks.register('copyJarNameConsistent', Copy) {
+    from remapJar // shortcut for createJar.outputs.files
+    into project.file("build/libs")
+    rename { name -> "seaborgium-" + project.name + "-latest.jar" }
+}
+def copyJarToBin = tasks.register('copyJarToBin', Copy) {
+	from remapJar // shortcut for createJar.outputs.files
+	into rootProject.file("bin")
+	mustRunAfter "copyJarNameConsistent"
+}
+
+archivesBaseName = rootProject.archives_base_name + '-' + project.name
+
+tasks.build.dependsOn(copyJarToBin, copyJarNameConsistent)
