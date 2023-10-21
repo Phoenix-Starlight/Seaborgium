@@ -32,13 +32,6 @@ configurations {
 dependencies {
     modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
     modApi "net.fabricmc.fabric-api:fabric-api:${rootProject.fabric_api_version}"
-    modLocalRuntime("maven.modrinth:sodium:mc1.18.2-0.4.1")
-    modLocalRuntime("maven.modrinth:entityculling:1.6.1-1.18.2")
-    modLocalRuntime("maven.modrinth:lithium:mc1.18.2-0.10.3")
-    //modLocalRuntime("maven.modrinth:spark:1.10.38-fabric")
-    modLocalRuntime("maven.modrinth:modmenu:3.2.5")
-    modLocalRuntime("maven.modrinth:starlight:1.0.2+1.18.2")
-    modLocalRuntime('org.joml:joml:1.10.4')
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionFabric")) { transitive false }
 }
