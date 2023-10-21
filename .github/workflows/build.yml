@@ -1,5 +1,11 @@
 name: build
-on: [pull_request, push]
+on:
+  push:
+    branches:
+      - '**'
+    tags-ignore:
+      - '**'
+  pull_request:
 
 jobs:
   build:
