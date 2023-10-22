@@ -6,7 +6,7 @@
   "description": "Seaborgium is a rendering focused optimization mod.",
   "authors": [],
   "contact": {},
-  "license": "All Rights Reserved",
+  "license": "ISC",
   "icon": "icon.png",
   "environment": "*",
   "entrypoints": {
